@@ -11,9 +11,7 @@ def validar_cpf(cpf_digitado_pelo_usuario):
     contador_dos_nove_digitos = 9
     contador_segundo_digito = 11
     contador_primeiro_digito = 10
-
-    if len(cpf_digitado_pelo_usuario) < 11:
-        return "Digite um CPF maior que 11 caracteres!"
+    
 
     cpf_limpo = re.sub(r'[^0-9]', '', cpf_digitado_pelo_usuario)
 
@@ -48,10 +46,8 @@ def validar_cpf(cpf_digitado_pelo_usuario):
     cpf_gerado_pelo_calculo = f'{nove_digitos}{ultimo_primeiro_digito}{ultimo_segundo_digito}'
 
     if cpf_gerado_pelo_calculo == cpf_limpo:
-        print(f"Seu CPF é válido! {cpf_gerado_pelo_calculo}")
         return True
     else:
-        print("Seu CPF é inválido!")
         return False
 
 @app.route("/")
@@ -60,7 +56,15 @@ def instrucoes():
 
 @app.route("/valida/<cpf>")
 def valida(cpf):
-    return validar_cpf(cpf)
+    valido = validar_cpf(cpf)
+    if len(cpf) < 11:
+        return f"Digite um CPF maior que 11 caracteres!"
+    
+    if valido == True:
+        return f"Seu CPF é válido! {cpf}"
+
+    else:
+        return f"Seu CPF é inválido!"
 
 if __name__ == "__main__":
     app.run(debug=True)
