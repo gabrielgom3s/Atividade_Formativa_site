@@ -48,9 +48,11 @@ def validar_cpf(cpf_digitado_pelo_usuario):
     cpf_gerado_pelo_calculo = f'{nove_digitos}{ultimo_primeiro_digito}{ultimo_segundo_digito}'
 
     if cpf_gerado_pelo_calculo == cpf_limpo:
-        return f"Seu CPF é válido! {cpf_gerado_pelo_calculo}"
+        print(f"Seu CPF é válido! {cpf_gerado_pelo_calculo}")
+        return True
     else:
-        return "Seu CPF é inválido!"
+        print("Seu CPF é inválido!")
+        return False
 
 @app.route("/")
 def instrucoes():
