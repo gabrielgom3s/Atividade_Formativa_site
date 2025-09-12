@@ -1,1 +1,5 @@
-Este é um pequeno site aonde vou implementar um codigo para validação de cpf, feito por mim com ajuda de um curso da udemy
+- Este é um pequeno site usando o Flask
+
+- O site vai validar o CPF informado pelo usuario, o mesmo deve informar o CPF pela url 
+
+- O codigo eu reutilizei de um curso que fiz, aonde elaborei a estrutura de validação, a tecnologia que usei foi a Flask para subir como um site web
