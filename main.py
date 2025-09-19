@@ -13,6 +13,7 @@ def validar_cpf(cpf_digitado_pelo_usuario):
     contador_primeiro_digito = 10
     
 
+
     cpf_limpo = re.sub(r'[^0-9]', '', cpf_digitado_pelo_usuario)
 
     for i in cpf_limpo:

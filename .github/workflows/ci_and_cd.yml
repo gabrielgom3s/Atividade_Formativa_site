@@ -34,3 +34,12 @@ jobs:
         with:
           name: projeto-cpf
           path: projeto.zip
+  notify:
+    runs-on: ubuntu-latest
+    needs: [test, build] # só roda depois que os outros jobs terminarem
+    steps:
+      - name: Enviar alerta para Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\": \"🚨 Workflow finalizado no repositório *${{ github.repository }}* no commit ${{ github.sha }}. Status: ${{ job.status }}\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}       
