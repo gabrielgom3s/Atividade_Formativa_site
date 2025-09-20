@@ -23,6 +23,13 @@ def validar_cpf(cpf_digitado_pelo_usuario):
     if cpf_limpo == cpf_limpo[0] * 11:
         return False
 
+    # Lista de CPFs inválidos conhecidos (mesmo passando no cálculo)
+    cpfs_invalidos = {
+        "12345678909", "98765432100"
+    }
+    if cpf_limpo in cpfs_invalidos:
+        return False
+
     # Cálculo do primeiro dígito
     for i in cpf_limpo:
         i = int(i)
@@ -61,6 +68,7 @@ def validar_cpf(cpf_digitado_pelo_usuario):
         return True
     else:
         return False
+
 
 @app.route("/")
 def instrucoes():
