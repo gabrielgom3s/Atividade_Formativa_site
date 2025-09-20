@@ -1,5 +1,5 @@
 import pytest
-import main
+import src.main as main
 
 def test_cpf_valido():
     """CPF válido conhecido"""
